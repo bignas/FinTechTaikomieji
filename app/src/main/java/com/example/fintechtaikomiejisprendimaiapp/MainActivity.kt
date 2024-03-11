@@ -1,43 +1,25 @@
 package com.example.fintechtaikomiejisprendimaiapp
 
 import android.os.Bundle
+import android.widget.*
 import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.example.fintechtaikomiejisprendimaiapp.ui.theme.FinTechTaikomiejiSprendimaiAppTheme
 
 class MainActivity : ComponentActivity() {
+    lateinit var textView: TextView
+    lateinit var button: Button
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent {
-            FinTechTaikomiejiSprendimaiAppTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
-                    Greeting("Android")
-                }
-            }
+        setContentView(R.layout.activity_main)
+
+        textView = findViewById(R.id.text_view)
+        button = findViewById(R.id.button)
+
+        var num = 1
+
+        button.setOnClickListener {
+            textView.text = num.toString()
+            num += 1
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    FinTechTaikomiejiSprendimaiAppTheme {
-        Greeting("Android")
     }
 }
